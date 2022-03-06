@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Build Docker image'){
             steps {
-                sh 'docker build -t arun1801docker/docker_spring_boot:${BUILD_NUMBER} .'
+                sh 'docker build -t arun1801docker/docker_spring_boot .'
             }
         }
         stage('Docker Login'){
@@ -26,12 +26,12 @@ pipeline {
         }           
         stage('Docker Push'){
             steps {
-                sh 'docker push arun1801docker/docker_spring_boot:${BUILD_NUMBER}'
+                sh 'docker push arun1801docker/docker_spring_boot'
             }
         }
         stage('Docker deploy'){
             steps {
-                sh 'docker run -p 8000:8080 arun1801docker/docker_spring_boot:${BUILD_NUMBER}'
+                sh 'docker run -p 8000:8080 arun1801docker/docker_spring_boot'
             }
         }
     }
