@@ -26,7 +26,12 @@ pipeline {
         }           
         stage('Docker Push'){
             steps {
-                sh 'docker push arun1801docker/docker_jenkins_pipeline:${BUILD_NUMBER}'
+                sh 'docker push arun1801docker/docker_spring_boot:${BUILD_NUMBER}'
+            }
+        }
+        stage('Docker deploy'){
+            steps {
+                sh 'docker run -itd -p 8081:8080 arun1801docker/docker_spring_boot:${BUILD_NUMBER}'
             }
         }
     }
