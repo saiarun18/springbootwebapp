@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Docker deploy'){
             steps {
-                sh 'docker run -itd -p 8000:8080 arun1801docker/docker_spring_boot:${BUILD_NUMBER}'
+                sh 'docker run -it -p 8000:8080 arun1801docker/docker_spring_boot:${BUILD_NUMBER}'
             }
         }
     }
